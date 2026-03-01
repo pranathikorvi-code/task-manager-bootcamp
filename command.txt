@@ -1,0 +1,178 @@
+use task_manager
+already on db task_manager
+db.createCollection("tasks")
+{ ok: 1 }
+db.tasks.insertMany([
+  {
+    task: "learning MongoDB",
+    createdAt: "27th Feb 2026",
+    deadline: "28th Feb 2026",
+    user: "Raj",
+    isCompleted: false
+  },
+  {
+    task: "workout",
+    createdAt: "27th Feb 2026",
+    deadline: "28th Feb 2026",
+    user: "Raj",
+    isCompleted: false
+  },
+  {
+    task: "sleep",
+    createdAt: "27th Feb 2026",
+    deadline: "28th Feb 2026",
+    user: "Raj",
+    isCompleted: false
+  }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69a419799ca80f6883718f64'),
+    '1': ObjectId('69a419799ca80f6883718f65'),
+    '2': ObjectId('69a419799ca80f6883718f66')
+  }
+}
+db.tasks.find()
+{
+  _id: ObjectId('69a419799ca80f6883718f64'),
+  task: 'learning MongoDB',
+  createdAt: '27th Feb 2026',
+  deadline: '28th Feb 2026',
+  user: 'Raj',
+  isCompleted: false
+}
+{
+  _id: ObjectId('69a419799ca80f6883718f65'),
+  task: 'workout',
+  createdAt: '27th Feb 2026',
+  deadline: '28th Feb 2026',
+  user: 'Raj',
+  isCompleted: false
+}
+{
+  _id: ObjectId('69a419799ca80f6883718f66'),
+  task: 'sleep',
+  createdAt: '27th Feb 2026',
+  deadline: '28th Feb 2026',
+  user: 'Raj',
+  isCompleted: false
+}
+db.tasks.find({ user: "Raj" })
+{
+  _id: ObjectId('69a419799ca80f6883718f64'),
+  task: 'learning MongoDB',
+  createdAt: '27th Feb 2026',
+  deadline: '28th Feb 2026',
+  user: 'Raj',
+  isCompleted: false
+}
+{
+  _id: ObjectId('69a419799ca80f6883718f65'),
+  task: 'workout',
+  createdAt: '27th Feb 2026',
+  deadline: '28th Feb 2026',
+  user: 'Raj',
+  isCompleted: false
+}
+{
+  _id: ObjectId('69a419799ca80f6883718f66'),
+  task: 'sleep',
+  createdAt: '27th Feb 2026',
+  deadline: '28th Feb 2026',
+  user: 'Raj',
+  isCompleted: false
+}
+db.tasks.findOne({ task: "sleep" })
+{
+  _id: ObjectId('69a419799ca80f6883718f66'),
+  task: 'sleep',
+  createdAt: '27th Feb 2026',
+  deadline: '28th Feb 2026',
+  user: 'Raj',
+  isCompleted: false
+}
+db.tasks.updateMany({ user: "Raj" }, { $set: { isCompleted: true } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+db.tasks.updateOne(
+  { task: "learning MongoDB" }, 
+  { $set: { deadline: "29th Feb 2026" } }
+)
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.tasks.updateMany(
+  { user: "Raj" }, 
+  { $set: { isCompleted: true } }
+)
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.tasks.updateOne({ task: "sleep" }, { $set: { procrastinated: 1 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.tasks.updateOne({ task: "learning MongoDB" }, { $set: { deadline: "5th Mar 2026" } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.tasks.updateMany({ user: "Raj" }, { $set: { isCompleted: true } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.tasks.replaceOne({ task: "sleep" }, { task: "meditate", createdAt: "27th Feb 2026", deadline: "28th Feb 2026", user: "Raj", isCompleted: false })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.tasks.deleteOne({ task: "learning MongoDB" })
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.tasks.deleteMany({ isCompleted: true })
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.tasks.find()
+{
+  _id: ObjectId('69a419799ca80f6883718f66'),
+  task: 'meditate',
+  createdAt: '27th Feb 2026',
+  deadline: '28th Feb 2026',
+  user: 'Raj',
+  isCompleted: false
+}
+Atlas atlas-usz7yw-shard-0 [primary] task_manager
+
+
